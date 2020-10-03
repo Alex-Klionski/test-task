@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        .profile-pic{
+            max-width: 200px;
+            max-height:200px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    </style>
+    <br>
+    <div class="card-user text-center d-flex justify-content-center">
+
+        <div class="card-body">
+            <img class="profile-pic" >
+            <div class="pagetitle-separator">
+                <div class="pagetitle-separator-border">
+                    <div class="pagetitle-separator-box">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="btn btn-primary" type="hidden" name="Update Information">
+                <button class="btn btn-primary">Update Information</button>
+            </form>
+
+        </div>
+    </div>
+{% endblock content %}

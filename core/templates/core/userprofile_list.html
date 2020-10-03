@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<table class="table table-striped">
+    <style>
+        .profile-pic{
+            max-width: 100px;
+            max-height: 100px;
+            margin: 0 auto;
+
+        }
+    </style>
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Configuration</th>
+          <th scope="col">Price</th>
+          <th scope="col">Used by</th>
+          <th scope="col">Comment</th>
+          <th scope="col">Item number</th>
+          <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in object_list %}
+            <tr>
+              <th scope="row">{{ item.pk}}</th>
+              <td>{{ item.title }}</td>
+              <td><img class="profile-pic" src="{{ item.configuration.url }}"></td>
+              <td>{{ item.price }}</td>
+              <td>{{ item.used_by }}</td>
+              <td>{{ item.comment }}</td>
+              <td>{{ item.item_number }}</td>
+              <td>{{ item.date}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+{% endblock content %}

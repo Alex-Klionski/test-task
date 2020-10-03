@@ -1,0 +1,48 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">TestTask</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+          {% if user.is_staff %}
+              <a class="nav-link" href="{% url 'device-add' %}">Add device</a>
+          {% endif %}
+      </li>
+     <li class="nav-item">
+          {% if user.is_staff %}
+              <a class="nav-link" href="{% url 'give-out-device' %}">Give out</a>
+          {% endif %}
+      </li>
+    </ul>
+        <ul class="navbar-nav mr-0">
+                {% if user.is_active %}
+                    <li class="nav-item my-0">
+                        <a class="nav-link" href="{% url 'edit-avatar' %}">Профиль</a>
+                    </li>
+                    <li class="nav-item my-0">
+                        <a class="nav-link" href="/accounts/logout/">Выход</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item my-0">
+                        <a class="nav-link" href="{% url 'login' %}" data-toggle="modal" data-target="#loginModel">
+                            Вход
+                        </a>
+                    </li>
+                     <li class="nav-item my-0">
+                        <a class="nav-link" href="{% url 'register' %}" data-toggle="modal" data-target="#signupModal">
+                            Регистрация
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+  </div>
+</nav>
+
